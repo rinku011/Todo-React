@@ -33,7 +33,7 @@ const Login = () => {
       );
       const newToken = data.token;
       setToken(newToken);
-      Cookies.set("token", newToken, { expires: 7 });
+      // Cookies.set("token", newToken, { expires: 7 });
       toast.success(data.message);
       setIsAuthenticated(true);
       setLoading(false);

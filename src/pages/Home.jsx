@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "../assets/axios";
+import axios from "axios";
 import { Context, server } from "../main";
 import toast from "react-hot-toast";
 import TodoItem from "../components/TodoItem";

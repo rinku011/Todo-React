@@ -3,9 +3,11 @@ import { Link, Navigate } from "react-router-dom";
 import { Context, server } from "../main";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState(Cookies.get("token") || "");
   const [password, setPassword] = useState("");
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
     useContext(Context);
@@ -29,7 +31,9 @@ const Login = () => {
           withCredentials: true,
         }
       );
-
+      const newToken = data.token;
+      setToken(newToken);
+      Cookies.set("token", newToken, { expires: 7 });
       toast.success(data.message);
       setIsAuthenticated(true);
       setLoading(false);
